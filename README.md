@@ -1,2 +1,1 @@
-# samuelfry.github.io
-Portfolio Repository for Samuel Fry
+Portofolio repository for Samuel Fry
