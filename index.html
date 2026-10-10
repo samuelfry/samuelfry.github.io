@@ -9,17 +9,17 @@
   <div><b>Development process</b></div>
   <ol>
     <li>
-      <span>Design circuit schematic and simulate signal response in NGspice</span>
+      <div>Design circuit schematic and simulate signal response in NGspice</div>
       <p>Using NGspice, I copied a starter schematic from the <a href="https://docs.google.com/document/d/1hn5cEKQxbLcQVzvg12oGOMEZYKMwNovlQ1UPVcNpHTU/edit?tab=t.0">lab instructions</a> and began designing.
       This step was particularly difficult since I was still learning how to manage NGspice and I experimented very litte with frequency filters. Additionally, the OpAmps we used were non-ideal, meaning they
       had unpredictable behavior.</p>
       <p>My design process was the following. My final schematic design is below for reference:</p>
-      <img src="/Screenshot 2026-10-09 174944.png" />
+      <img src="/Screenshot 2026-10-09 174944.png" style="max-width: 50%; height: auto;" />
       <ul>
         <li>Calculate the value of R1</li>
         <li>Filter out battery noise and supply clean power to power rails (this did not include the low pass filter from R4 and C9).</li>
         <li>Calculate gain bandwidth product and make gain within those limits. I made a test schematic to see which feedback configuration allowed for more gain bandwidth. Refer to the following image for my data
-          <img src="/Screenshot 2026-10-09 175206.png" />
+          <img src="/Screenshot 2026-10-09 175206.png" style="max-width: 50%; height: auto;" />
         </li>
         <li>Implement low and high pass filters on one op amp, calculating C7 and C5 according to resistors R7 and R9</li>
         <li>Repeat the last 2 steps for the second op amp</li>
@@ -28,15 +28,15 @@
       </ul>
     </li>
     <li>
-      <span>Implement schematic design on breadboard and test using real-world sources</span>
+      <div>Implement schematic design on breadboard and test using real-world sources</div>
       <p>Using a test bench with an oscilloscope, multimeter, power supply, and function generator, we simulated various current sources and incrementally built our receiver circuit. We still have much to accomplish
       with this circuit, but we've been able to adequately divide the power rails and set 1st order filters on the first op amp.</p>
-      <img src="/IMG_2313.jpeg" />
-      <span>Test bench</span>
-      <img src="/IMG_2314.jpeg" />
-      <span>First iteration of receiver circuit</span>
-      <img src="/IMG_2333.jpeg" />
-      <span>Second iteration of receiver circuit (missing 2nd op amp functionality)</span>
+      <img src="/IMG_2313.jpeg" style="max-width: 50%; height: auto;" />
+      <div>Test bench</div>
+      <img src="/IMG_2314.jpeg" style="max-width: 50%; height: auto;" />
+      <div>First iteration of receiver circuit</div>
+      <img src="/IMG_2333.jpeg" style="max-width: 50%; height: auto;" />
+      <div>Second iteration of receiver circuit (missing 2nd op amp functionality)</div>
     </li>
     <li>Create PCB schematic and outsource fabrication</li>
     <li>Solder on circuit elements and conduct final testing</li>
@@ -47,15 +47,15 @@
   discreet communication between a parent to a deaf child to our current Ripple Case, a device that allows hearing-aid users adapt to overstimulating audio environments. 
   The images below are of functional prototypes that we have now. For more information, refer to our github repos <a href="https://github.com/summit-innovations/ripple_server.git">Ripple Server</a>, 
   <a href="https://github.com/summit-innovations/ripple_case.git">Ripple Case</a>, and <a href="https://github.com/summit-innovations/ripple_site.git">Ripple Site</a></p>
-  <img src="/IMG_2334.jpeg" />
-  <span>Current Prototype</span>
+  <img src="/IMG_2334.jpeg" style="max-width: 50%; height: auto;" />
+  <div>Current Prototype</div>
   <h1>Custom Drone</h1>
   <h2>About</h2>
   <p>This project is for fun, as a birthday/christmas present for my teenage brother-in-laws. I am in the beginning steps of this project, with merely some schematics and a render from AI.</p>
-  <img src="/IMG_2336.jpeg" />
-  <span>Remote controller schematic</span>
-  <img src="/IMG_2335.jpeg" />
-  <span>Drone schematic</span>
-  <img src="/quad-render.png" />
-  <span>Drone render</span>
+  <img src="/IMG_2336.jpeg" style="max-width: 50%; height: auto;" />
+  <div>Remote controller schematic</div>
+  <img src="/IMG_2335.jpeg" style="max-width: 50%; height: auto;" />
+  <div>Drone schematic</div>
+  <img src="/quad-render.png" style="max-width: 50%; height: auto;" />
+  <div>Drone render</div>
 </body>
