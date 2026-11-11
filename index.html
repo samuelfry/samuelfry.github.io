@@ -1,61 +1,491 @@
-<header>Portfolio for Samuel Fry</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Samuel Fry's electrical engineering portfolio, featuring EC EN 340 circuit design, embedded systems, Ripple Case, and personal engineering projects.">
+  <title>Samuel Fry | Electrical Engineering Portfolio</title>
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #596775;
+      --paper: #f5f7f8;
+      --card: #ffffff;
+      --line: #dce3e8;
+      --accent: #176b67;
+      --accent-dark: #104d4a;
+      --soft: #eaf3f2;
+      --max: 1080px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: var(--accent-dark); }
+    a:hover { color: var(--accent); }
+    .site-header {
+      color: white;
+      background: #142c35;
+      padding: 64px 24px 52px;
+    }
+    .header-inner, main, .nav-inner, footer { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: #a8d3ce;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { line-height: 1.2; }
+    .site-header h1 { margin: 0; font-size: clamp(2.4rem, 6vw, 4.2rem); letter-spacing: -.04em; }
+    .role { margin: 10px 0 18px; color: #c9d9df; font-size: 1.15rem; }
+    .intro { max-width: 820px; margin: 0; color: #edf3f5; font-size: 1.04rem; }
+    .contact { margin: 20px 0 0; color: #d2e2e5; font-size: .95rem; }
+    .contact a { color: #b7e3dc; }
+    .nav-wrap {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .nav-inner { display: flex; flex-wrap: wrap; gap: 6px 22px; padding: 13px 0; }
+    .nav-inner a { text-decoration: none; font-size: .9rem; font-weight: 650; white-space: nowrap; }
+    main { padding: 38px 0 70px; }
+    section { margin: 0 0 34px; }
+    .section-card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 15px;
+      padding: clamp(22px, 4vw, 38px); box-shadow: 0 5px 18px rgba(23,33,43,.035);
+    }
+    .section-kicker {
+      color: var(--accent); font-size: .76rem; font-weight: 750;
+      letter-spacing: .12em; text-transform: uppercase; margin: 0 0 7px;
+    }
+    h2 { margin: 0 0 16px; font-size: clamp(1.7rem, 3vw, 2.25rem); letter-spacing: -.025em; }
+    h3 { margin: 26px 0 9px; font-size: 1.22rem; }
+    p { margin: 0 0 13px; }
+    .lead { color: var(--muted); font-size: 1.06rem; max-width: 850px; }
+    .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 22px 0; }
+    .meta { padding: 14px 16px; border-radius: 10px; background: var(--soft); }
+    .meta strong { display: block; font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--accent-dark); }
+    .meta span { display: block; margin-top: 3px; }
+    ul, ol { padding-left: 1.35rem; }
+    li { margin: 5px 0; }
+    .artifact { border-top: 1px solid var(--line); margin-top: 28px; padding-top: 22px; }
+    .artifact:first-of-type { border-top: 0; margin-top: 0; padding-top: 0; }
+    .artifact h3 { margin-top: 0; }
+    .gallery {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+      gap: 16px; margin: 20px 0 10px;
+    }
+    figure { margin: 0; min-width: 0; }
+    figure img {
+      display: block; width: 100%; height: auto; max-height: 520px; object-fit: contain;
+      background: #eef1f2; border: 1px solid var(--line); border-radius: 9px;
+    }
+    figcaption { color: var(--muted); font-size: .88rem; padding: 7px 2px 0; }
+    .note {
+      background: #f1f6f6; border-left: 4px solid var(--accent);
+      padding: 13px 16px; margin: 16px 0; color: #33434a;
+    }
+    .placeholder {
+      border: 1px dashed #9aabb3; border-radius: 9px; padding: 13px 16px;
+      color: #53636b; background: #fafcfc;
+    }
+    .small { color: var(--muted); font-size: .9rem; }
+    footer { border-top: 1px solid var(--line); padding: 24px 0 38px; color: var(--muted); font-size: .9rem; }
+    @media (max-width: 600px) {
+      .site-header { padding: 46px 0 38px; }
+      .header-inner, main, .nav-inner, footer { width: min(100% - 28px, var(--max)); }
+      .nav-inner { gap: 7px 15px; }
+      .nav-inner a { font-size: .83rem; }
+      .section-card { border-radius: 11px; }
+    }
+  </style>
+</head>
 <body>
-  <p>Welcome to Samuel Fry's Portfolio! Below are a collection of personal, professional, and academic projects. If you have questions regarding the certain projects, feel free to email me at <a href="mailto:frysamuel6@gmail.com">frysamuel6@gmail.com</a> or call me at (907) 795-5051.</p> 
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <p class="eyebrow">Electrical Engineering Portfolio</p>
+      <h1>Samuel Fry</h1>
+      <p class="role">Electrical Engineering Student | Brigham Young University</p>
+      <p class="intro">
+        I'm an Electrical Engineering student at Brigham Young University with interests in embedded systems,
+        power electronics, automation, and process control. My technical experience spans C/C++, BLE and
+        Bluetooth integration, circuit modeling and simulation with NGspice, breadboard prototyping, and
+        laboratory testing with oscilloscopes. I enjoy working across the boundary between hardware and
+        software, taking ideas from initial concepts through circuit design, prototyping, and testing.
+        Beyond academic coursework, I have pursued projects such as Ripple Case, a hearing-assistance device
+        designed to help individuals with hearing loss navigate overstimulating audio environments, and a
+        custom drone developed as a personal engineering project.
+      </p>
+      <p class="contact">Contact: <a href="mailto:frysamuel6@gmail.com">frysamuel6@gmail.com</a></p>
+    </div>
+  </header>
 
-  <h1>Receiver Circuit</h1>
-  <h2>About</h2>
-  <p>This project was for ECEn 340, Electronic Circuit Design 1. The purpose of this project was to design a circuit using basic circuit elements that can filter out a band of frequencies and amplify it. The end
-  goal is to integrate the circuit into a embedded system that can detect which frequency the player is being shot with.</p>
-  <div><b>Development process</b></div>
-  <ol>
-    <li>
-      <div>Design circuit schematic and simulate signal response in NGspice</div>
-      <p>Using NGspice, I copied a starter schematic from the <a href="https://docs.google.com/document/d/1hn5cEKQxbLcQVzvg12oGOMEZYKMwNovlQ1UPVcNpHTU/edit?tab=t.0">lab instructions</a> and began designing.
-      This step was particularly difficult since I was still learning how to manage NGspice and I experimented very litte with frequency filters. Additionally, the OpAmps we used were non-ideal, meaning they
-      had unpredictable behavior.</p>
-      <p>My design process was the following. My final schematic design is below for reference:</p>
-      <img src="/Screenshot 2026-10-09 174944.png" style="max-width: 50%; height: auto;" />
+  <nav class="nav-wrap" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#intro">Introduction</a>
+      <a href="#ecen340">EC EN 340</a>
+      <a href="#ripple">Ripple Case</a>
+      <a href="#drone">Custom Drone</a>
+      <a href="#aims">BYU Aims</a>
+      <a href="#reflection">Design Journey</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="intro" class="section-card">
+      <p class="section-kicker">01 / Overview</p>
+      <h2>Engineering interests and approach</h2>
+      <p class="lead">
+        I am particularly interested in practical engineering problems that combine electronics,
+        embedded programming, and system-level design. I value understanding why a design works,
+        validating it through measurement, and improving it when real-world behavior differs from
+        theoretical expectations.
+      </p>
+      <div class="meta-grid">
+        <div class="meta"><strong>Areas of interest</strong><span>Embedded systems, power electronics, automation, process control</span></div>
+        <div class="meta"><strong>Technical experience</strong><span>C/C++, BLE/Bluetooth, NGspice, breadboarding, oscilloscope testing</span></div>
+        <div class="meta"><strong>Design approach</strong><span>Analyze, simulate, prototype, measure, and revise</span></div>
+      </div>
+    </section>
+
+    <section id="ecen340" class="section-card">
+      <p class="section-kicker">02 / Coursework</p>
+      <h2>EC EN 340 — Electronic Circuit Design I</h2>
+      <p class="lead">
+        These artifacts document several stages of my EC EN 340 work, from analog circuit design
+        and experimental characterization to a transmitter circuit and a fabricated printed circuit
+        board. Together, they demonstrate circuit analysis, simulation, laboratory measurement,
+        component research, and PCB layout.
+      </p>
+
+      <article class="artifact" id="receiver">
+        <h3>Artifact 1: Receiver circuit design and simulation</h3>
+        <div class="meta-grid">
+          <div class="meta"><strong>Problem</strong><span>Design a circuit that filters and amplifies a target frequency band for a laser-tag receiver.</span></div>
+          <div class="meta"><strong>Contribution</strong><span>Developed and evaluated the receiver's filter and amplifier stages in NGspice.</span></div>
+          <div class="meta"><strong>Result</strong><span>Produced a cascaded amplifier/filter design and used simulation to examine its frequency response.</span></div>
+          <div class="meta"><strong>Demonstrates</strong><span>Analog circuit design, filter analysis, gain and bandwidth tradeoffs, and simulation.</span></div>
+        </div>
+        <p>
+          I began with the provided starter schematic and developed the circuit incrementally. I
+          considered the power supply, op-amp gain-bandwidth limitations, and the high-pass and
+          low-pass behavior of the filter stages. Because the op-amps were non-ideal, simulation
+          required attention to practical device limitations rather than relying only on ideal
+          amplifier assumptions.
+        </p>
+        <p>
+          I used NGspice to evaluate the response and to compare alternative feedback configurations.
+          The design was then carried into a physical breadboard implementation for laboratory testing.
+        </p>
+        <div class="gallery">
+          <figure>
+            <img src="Screenshot%202026-10-09%20174944.png" alt="Original receiver circuit schematic">
+            <figcaption>Receiver circuit schematic from the initial design work.</figcaption>
+          </figure>
+          <figure>
+            <img src="Screenshot%202026-10-09%20175206.png" alt="Gain bandwidth comparison data">
+            <figcaption>Comparison data used when considering op-amp gain and bandwidth.</figcaption>
+          </figure>
+          <figure>
+            <img src="lab3_freqresponse.png" alt="Theoretical receiver frequency response">
+            <figcaption>Theoretical frequency-response plot used as a reference for experimental comparison.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="artifact" id="receiver-breadboard">
+        <h3>Artifact 2: Receiver breadboard implementation and testing</h3>
+        <div class="meta-grid">
+          <div class="meta"><strong>Problem</strong><span>Translate the simulated receiver design into a working physical circuit.</span></div>
+          <div class="meta"><strong>Contribution</strong><span>Built and tested the breadboard circuit, including the second filter stage and second op-amp.</span></div>
+          <div class="meta"><strong>Result</strong><span>Completed the second-stage filter and collected experimental data from the final breadboard.</span></div>
+          <div class="meta"><strong>Demonstrates</strong><span>Prototyping, laboratory instrumentation, troubleshooting, and comparison of measured and simulated behavior.</span></div>
+        </div>
+        <p>
+          After developing the schematic, I assembled the circuit on a breadboard and tested it using
+          laboratory equipment. The final breadboard implementation included the second filter stage
+          with a second op-amp. I collected measurement data to evaluate the circuit's behavior.
+        </p>
+        <p>
+          This stage connected the theoretical and simulated design to a physical implementation.
+          It also provided an opportunity to observe how real components and wiring affect circuit
+          behavior.
+        </p>
+        <div class="gallery">
+          <figure>
+            <img src="IMG_2369.jpeg" alt="Receiver circuit breadboard">
+            <figcaption>Receiver breadboard implementation.</figcaption>
+          </figure>
+          <figure>
+            <img src="IMG_2370.jpeg" alt="Circuit prototype on a small blue prototyping board">
+            <figcaption>Additional circuit prototype used during the laboratory work.</figcaption>
+          </figure>
+        </div>
+        <div class="note">
+          Experimental frequency-response comparison: the measured gain curve should be calculated
+          from the corresponding input and output measurements. The uploaded scope data still needs
+          to be identified as input, output, or transmitter data before a measured gain plot can be
+          labeled accurately.
+        </div>
+      </article>
+
+      <article class="artifact" id="transmitter">
+        <h3>Artifact 3: Laser-tag transmitter circuit</h3>
+        <div class="meta-grid">
+          <div class="meta"><strong>Problem</strong><span>Control the frequency of the LED pulses emitted by the laser-tag transmitter.</span></div>
+          <div class="meta"><strong>Contribution</strong><span>Tested the circuit on the laboratory bench and verified LED current behavior.</span></div>
+          <div class="meta"><strong>Result</strong><span>Used the CAT4104 LED driver breakout board and test points to check circuit operation.</span></div>
+          <div class="meta"><strong>Demonstrates</strong><span>Datasheet interpretation, component integration, current verification, and teamwork.</span></div>
+        </div>
+        <p>
+          The transmitter controls the light-pulse frequency emitted by the laser-tag gun. The
+          resistance connected to the driver's RESET pin affects the pulse behavior. I worked with
+          a CAT4104 LED driver on a breakout board and tested the circuit using the available test
+          points, checking that the current through the LED was appropriate.
+        </p>
+        <p>
+          This work strengthened my ability to read component datasheets, especially pin assignments
+          and input constraints. It also reinforced the value of dividing a larger project into
+          parallel tasks and coordinating with a teammate.
+        </p>
+        <div class="gallery">
+          <figure>
+            <img src="Screenshot%202026-11-10%20211305.png" alt="Transmitter circuit schematic">
+            <figcaption>Transmitter schematic.</figcaption>
+          </figure>
+          <figure>
+            <img src="trans_l3.csv" alt="" style="display:none">
+            <img src="IMG_2370.jpeg" alt="Transmitter or driver prototype board">
+            <figcaption>Prototype board used during circuit development. Confirm whether this is the transmitter-specific prototype before publishing this caption.</figcaption>
+          </figure>
+        </div>
+        <p class="small">
+          The transmitter measurement file, trans_l3.csv, is retained with the project data. Its
+          measured quantity should be identified before publishing a graph or numerical conclusion.
+        </p>
+      </article>
+
+      <article class="artifact" id="diode-lab">
+        <h3>Artifact 4: Lab 4 — Predicting diode parameters</h3>
+        <div class="meta-grid">
+          <div class="meta"><strong>Problem</strong><span>Estimate the diode parameters saturation current (I<sub>S</sub>), ideality factor (n), and series resistance (R<sub>S</sub>).</span></div>
+          <div class="meta"><strong>Contribution</strong><span>Designed a test circuit, collected voltage measurements, calculated current, and interpolated the resulting data.</span></div>
+          <div class="meta"><strong>Result</strong><span>Predicted diode parameters and checked the predictions against a separate simulated test circuit.</span></div>
+          <div class="meta"><strong>Demonstrates</strong><span>Device characterization, measurement-based modeling, data interpolation, and simulation validation.</span></div>
+        </div>
+        <p>
+          The goal of this lab was to predict the electrical parameters of the diode used in the
+          transmitter board. I developed a test circuit in which a PMOS transistor acted as a
+          controllable current source. By sweeping its gate voltage, I collected operating points
+          and measured the voltage across the diode and across a resistor connected to ground.
+        </p>
+        <p>
+          The resistor voltage allowed me to calculate the diode current at each operating point.
+          I then used the collected data and a Python interpolation script to estimate the diode's
+          I<sub>S</sub>, n, and R<sub>S</sub> parameters. To evaluate the predictions, I built a
+          separate test circuit and compared its measured current with the Qucs-S simulation.
+        </p>
+        <p>
+          This lab taught me how to design a test circuit for characterizing a component, use a
+          transistor as a practical current source, and extract a useful model from a collection
+          of measured data points.
+        </p>
+        <div class="gallery">
+          <figure>
+            <img src="Screenshot%202026-11-10%20214550.png" alt="Diode parameter characterization test circuit schematic">
+            <figcaption>Test circuit used to collect diode voltage and current data.</figcaption>
+          </figure>
+        </div>
+        <p class="small">
+          Add the diode measurement plot, parameter-fit results, and validation measurements here
+          when those final figures are selected.
+        </p>
+      </article>
+
+      <article class="artifact" id="pcb">
+        <h3>Artifact 5: KiCad schematic and PCB design</h3>
+        <div class="meta-grid">
+          <div class="meta"><strong>Problem</strong><span>Translate the circuit design into a manufacturable PCB layout.</span></div>
+          <div class="meta"><strong>Contribution</strong><span>Created the KiCad schematic and PCB layout, mapping the Qucs-S design and selecting footprints.</span></div>
+          <div class="meta"><strong>Result</strong><span>Completed the first PCB layout and received the fabricated board.</span></div>
+          <div class="meta"><strong>Demonstrates</strong><span>Schematic capture, footprint selection, component placement, routing, and hardware design workflow.</span></div>
+        </div>
+        <p>
+          I independently created the KiCad schematic and PCB layout, translating the circuit
+          design from Qucs-S into KiCad. I used existing library footprints and had to determine
+          which footprint styles matched the physical components, including different capacitor
+          package and lead configurations.
+        </p>
+        <p>
+          During layout, I prioritized keeping traces close to the components they connected.
+          I also considered the placement of larger components, keeping them away from board
+          edges where possible, before completing the remaining routing. I used a tutorial from
+          the teaching assistant as a reference while learning the KiCad workflow:
+          <a href="https://youtu.be/pRR4TqBSYIo" target="_blank" rel="noopener noreferrer">KiCad tutorial</a>.
+        </p>
+        <div class="gallery">
+          <figure>
+            <img src="Screenshot%202026-11-10%20211332.png" alt="Amplifier section of the circuit schematic">
+            <figcaption>Amplifier portion of the schematic.</figcaption>
+          </figure>
+          <figure>
+            <img src="Screenshot%202026-11-10%20211318.png" alt="Connector schematic">
+            <figcaption>Connector schematic.</figcaption>
+          </figure>
+          <figure>
+            <img src="Screenshot%202026-11-10%20211305.png" alt="Transmitter schematic">
+            <figcaption>Transmitter schematic.</figcaption>
+          </figure>
+          <figure>
+            <img src="Screenshot%202026-11-10%20211253.png" alt="Power supply schematic">
+            <figcaption>Power supply schematic.</figcaption>
+          </figure>
+          <figure>
+            <img src="Screenshot%202026-11-10%20211234.png" alt="PCB bottom copper and routing view">
+            <figcaption>PCB routing and bottom-side view.</figcaption>
+          </figure>
+          <figure>
+            <img src="Screenshot%202026-11-10%20211207.png" alt="Three-dimensional PCB render">
+            <figcaption>Three-dimensional PCB render before fabrication.</figcaption>
+          </figure>
+          <figure>
+            <img src="IMG_2428.jpeg" alt="Fabricated unpopulated printed circuit board">
+            <figcaption>Fabricated PCB received from the board manufacturer. Components have not yet been soldered.</figcaption>
+          </figure>
+        </div>
+        <div class="note">
+          <strong>Current status:</strong> The first PCB revision has been fabricated and received.
+          It has not yet been populated or electrically tested, so its final performance and any
+          required revisions are not yet known.
+        </div>
+      </article>
+    </section>
+
+    <section id="ripple" class="section-card">
+      <p class="section-kicker">03 / Innovation project</p>
+      <h2>Ripple Case</h2>
+      <p class="lead">
+        Ripple Case is an interdisciplinary project developed through the Crocker Fellowship,
+        an innovation and commercialization program. The project has evolved through several
+        concepts, including discreet communication between a parent and a deaf child, and its
+        current focus: helping hearing-aid users adapt to overstimulating audio environments.
+      </p>
+      <p>
+        The current concept uses a microphone array and a connected device to help improve
+        environmental awareness and listening experiences for people with hearing loss. The work
+        combines hardware prototyping, embedded systems, software development, and product design.
+      </p>
+      <figure>
+        <img src="IMG_2334.jpeg" alt="Ripple Case prototype" style="max-width: 720px;">
+        <figcaption>Ripple Case prototype.</figcaption>
+      </figure>
+      <h3>Project repositories</h3>
       <ul>
-        <li>Calculate the value of R1</li>
-        <li>Filter out battery noise and supply clean power to power rails (this did not include the low pass filter from R4 and C9).</li>
-        <li>Calculate gain bandwidth product and make gain within those limits. I made a test schematic to see which feedback configuration allowed for more gain bandwidth. Refer to the following image for my data
-          <img src="/Screenshot 2026-10-09 175206.png" style="max-width: 50%; height: auto;" />
-        </li>
-        <li>Implement low and high pass filters on one op amp, calculating C7 and C5 according to resistors R7 and R9</li>
-        <li>Repeat the last 2 steps for the second op amp</li>
-        <li>Add a low pass filter (C9 and R4) on the battery line to filter out the battery noise</li>
-        <li>Add one more low pass filter and two high pass filters in the cascading op amp configuration<li>
+        <li><a href="https://github.com/summit-innovations/ripple_server" target="_blank" rel="noopener noreferrer">Ripple Server</a></li>
+        <li><a href="https://github.com/summit-innovations/ripple_case" target="_blank" rel="noopener noreferrer">Ripple Case</a></li>
+        <li><a href="https://github.com/summit-innovations/ripple_site" target="_blank" rel="noopener noreferrer">Ripple Site</a></li>
       </ul>
-    </li>
-    <li>
-      <div>Implement schematic design on breadboard and test using real-world sources</div>
-      <p>Using a test bench with an oscilloscope, multimeter, power supply, and function generator, we simulated various current sources and incrementally built our receiver circuit. We still have much to accomplish
-      with this circuit, but we've been able to adequately divide the power rails and set 1st order filters on the first op amp.</p>
-      <img src="/IMG_2313.jpeg" style="max-width: 50%; height: auto;" />
-      <div>Test bench</div>
-      <img src="/IMG_2314.jpeg" style="max-width: 50%; height: auto;" />
-      <div>First iteration of receiver circuit</div>
-      <img src="/IMG_2333.jpeg" style="max-width: 50%; height: auto;" />
-      <div>Second iteration of receiver circuit (missing 2nd op amp functionality)</div>
-    </li>
-    <li>Create PCB schematic and outsource fabrication</li>
-    <li>Solder on circuit elements and conduct final testing</li>
-  </ol>
-  <h1>Ripple Case</h1>
-  <h2>About</h2>
-  <p>This project is for Crocker Fellowship, an interdisciplinary innovation program designed to teach the principles of innovation and commercialization. Our innovation has varied from a device to enable
-  discreet communication between a parent to a deaf child to our current Ripple Case, a device that allows hearing-aid users adapt to overstimulating audio environments. 
-  The images below are of functional prototypes that we have now. For more information, refer to our github repos <a href="https://github.com/summit-innovations/ripple_server.git">Ripple Server</a>, 
-  <a href="https://github.com/summit-innovations/ripple_case.git">Ripple Case</a>, and <a href="https://github.com/summit-innovations/ripple_site.git">Ripple Site</a></p>
-  <img src="/IMG_2334.jpeg" style="max-width: 50%; height: auto;" />
-  <div>Current Prototype</div>
-  <h1>Custom Drone</h1>
-  <h2>About</h2>
-  <p>This project is for fun, as a birthday/christmas present for my teenage brother-in-laws. I am in the beginning steps of this project, with merely some schematics and a render from AI.</p>
-  <img src="/IMG_2336.jpeg" style="max-width: 50%; height: auto;" />
-  <div>Remote controller schematic</div>
-  <img src="/IMG_2335.jpeg" style="max-width: 50%; height: auto;" />
-  <div>Drone schematic</div>
-  <img src="/quad-render.png" style="max-width: 50%; height: auto;" />
-  <div>Drone render</div>
+    </section>
+
+    <section id="drone" class="section-card">
+      <p class="section-kicker">04 / Personal project</p>
+      <h2>Custom Drone</h2>
+      <p class="lead">
+        This is a personal engineering project I began as a birthday and Christmas present for
+        my teenage brothers-in-law. The project is currently in its early design stage.
+      </p>
+      <p>
+        I am developing the remote controller and drone electronics, working through the initial
+        schematics and system concept before moving into implementation.
+      </p>
+      <div class="gallery">
+        <figure>
+          <img src="IMG_2336.jpeg" alt="Custom drone remote controller schematic">
+          <figcaption>Remote controller schematic.</figcaption>
+        </figure>
+        <figure>
+          <img src="IMG_2335.jpeg" alt="Custom drone schematic">
+          <figcaption>Drone schematic.</figcaption>
+        </figure>
+        <figure>
+          <img src="quad-render.png" alt="Concept render of the custom quadcopter">
+          <figcaption>Concept render of the drone.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="aims" class="section-card">
+      <p class="section-kicker">05 / BYU mission</p>
+      <h2>Connection to the BYU Aims</h2>
+      <p>
+        My experience studying electrical engineering has helped me see secular and spiritual
+        learning as interconnected rather than mutually exclusive. As I study circuits and
+        electronics, I gain a deeper appreciation for the order, complexity, and underlying
+        principles of the physical world. That learning has strengthened my faith in God and
+        my trust in His plan.
+      </p>
+      <p>
+        This reflects BYU's aim of developing spiritual strength alongside intellectual
+        enlargement. I see engineering education as an opportunity not only to gain technical
+        knowledge, but also to become more thoughtful about how that knowledge can be used
+        responsibly and in service of others.
+      </p>
+      <p class="small">
+        Learn more about the <a href="https://aims.byu.edu/" target="_blank" rel="noopener noreferrer">BYU Aims</a>.
+      </p>
+    </section>
+
+    <section id="reflection" class="section-card">
+      <p class="section-kicker">06 / Reflection</p>
+      <h2>Design Journey and Portfolio Reflection</h2>
+      <h3>What I can do now</h3>
+      <p>
+        At the beginning of the semester, I had less experience taking an analog circuit from
+        an initial design through simulation, physical prototyping, measurement, and PCB layout.
+        Through EC EN 340, I have developed a more complete design process. I can analyze and
+        simulate filter and amplifier circuits, build and test physical prototypes, use
+        experimental measurements to characterize components, and translate a circuit schematic
+        into a PCB layout in KiCad.
+      </p>
+      <p>
+        I have also learned that engineering requires more than obtaining a theoretically correct
+        result. Component limitations, datasheet constraints, measurement methods, and physical
+        implementation all influence whether a design works as intended.
+      </p>
+      <h3>How this portfolio was revised</h3>
+      <p>
+        This revision organizes the portfolio around a professional introduction, clear project
+        navigation, and selected engineering artifacts. The EC EN 340 work is now presented as
+        a progression from circuit design and simulation to breadboard testing, transmitter
+        development, diode characterization, and PCB design. Each artifact identifies the
+        engineering problem, my contribution, the result or current status, and the skills it
+        demonstrates. Captions and supporting images provide evidence of the design process.
+      </p>
+      <div class="placeholder">
+        <strong>Checkpoint 1 feedback — complete before submitting:</strong>
+        Add the specific feedback received on the previous portfolio and explain exactly how
+        this revision addresses each point. For example, identify any requested improvements
+        to organization, technical explanations, project evidence, or professional presentation.
+      </div>
+      <h3>What I would improve next</h3>
+      <p>
+        The next step is to solder and test the fabricated PCB, document its measured performance,
+        and compare the results with the original simulations. I would also like to complete a
+        measured-versus-theoretical receiver frequency-response comparison once the input and
+        output measurement files have been identified.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Samuel Fry · Electrical Engineering Portfolio · Brigham Young University</p>
+    <p><a href="#top">Back to top</a> · <a href="mailto:frysamuel6@gmail.com">Contact</a></p>
+  </footer>
 </body>
+</html>
